@@ -1,0 +1,27 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Roboto', sans-serif;
+}
+
+.quadrato{
+    width: 300px;
+    height: 300px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    background-color: lightgreen;
+    margin: 10px;
+    text-align: center;
+
+}
+
+#random_n, #input_n{
+    font-size: 30px;
+}
+
+#timer{
+    font-size: 70px;
+}
