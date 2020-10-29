@@ -5,23 +5,35 @@
     font-family: 'Roboto', sans-serif;
 }
 
+section{
+    height: 100vh;
+    display: flex;
+
+    background-color: #121212;
+}
+
 .quadrato{
-    width: 300px;
-    height: 300px;
+    width: 550px;
+    height: 550px;
+    margin: auto;
     display: flex;
     flex-direction: column;
     justify-content: space-around;
     align-items: center;
     background-color: lightgreen;
-    margin: 10px;
+    /* margin: 10px; */
     text-align: center;
-
+    font-size: 30px;
+    border-radius: 6px;
 }
 
-#random_n, #input_n{
+#random_n, #input_n, #correct_n{
     font-size: 30px;
 }
 
 #timer{
     font-size: 70px;
+    border: 1px solid black;
+    padding: 40px;
+    border-radius: 6px;
 }

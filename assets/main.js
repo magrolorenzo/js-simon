@@ -8,7 +8,7 @@ $(document).ready(function () {
     var min = 1;
     var max = 100;
     var numbers = 5;
-    var millisecondi = 10000;
+    var millisecondi = 30000; // Modificare qui per i secondi del countdown
     var countdown_seconds = millisecondi / 1000;
     var numeri_casuali = [];
     var numeri_inseriti = [];
@@ -21,6 +21,9 @@ $(document).ready(function () {
     // Inserisce nella pagina l'array di numeri
     $("#random_n").text(numeri_casuali.join(" | "));
 
+    // Nasconde descrizione "Numeri inseriti"
+    $("#input_n").siblings().hide();
+
     // Creazione timer countdown
     $("#timer").text(countdown_seconds);
     var countdown = setInterval( function(){
@@ -29,16 +32,17 @@ $(document).ready(function () {
         // Se arriva a 0 secondi, blocca il setInterval
         if(countdown_seconds<=0){
             clearInterval(countdown);
+            $("#timer").hide();
         }
     }, 1000);
 
     // Eventi dopo i 30 secondi
     setTimeout( function(){
-        // Svuota la lista dei numeri casuali
-        $("#random_n").text("");
+        // Nascondi la lista dei numeri casuali
+        $("#random_n").hide();
     }, millisecondi);
 
-    // Dopo mezzo secondo dallo svuotamento
+    // Dopo mezzo secondo dalla fine del countdown
     setTimeout( function(){
         // Chiede l'inserimento dei 5 numeri
         do {
@@ -51,12 +55,11 @@ $(document).ready(function () {
             }
         } while (numeri_inseriti.length < 5);
 
-
-
-
         // Mostro l' array dei numeri casuali e inseriti
-        $("#random_n").text(numeri_casuali.join(" | "));
+        $("#random_n").show();
         console.log(numeri_casuali);
+        // Mostra descrizione "Numeri inseriti"
+        $("#input_n").siblings().show();
         $("#input_n").text(numeri_inseriti.join(" | "));
         console.log(numeri_inseriti);
 
@@ -67,23 +70,14 @@ $(document).ready(function () {
             }
         }
 
-        console.log(numeri_indovinati);
-
-
+        if(numeri_indovinati.length!=0){
+            $("#esito").text("Hai indovinato i seguenti " + numeri_indovinati.length + " numeri!");
+            $("#correct_n").text(numeri_indovinati.join(" | "));
+        } else{
+            $("#esito").text("Non hai indovinato nemmeno un numero!");
+        }
 
     }, (millisecondi+500));
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 // ************************ Functions ************************
